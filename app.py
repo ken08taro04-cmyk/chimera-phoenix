@@ -86,7 +86,7 @@ def calculate_strategy(df):
     last_signal = {}
 
     for i, date in enumerate(monthly_dates):
-        if syn_ret.index.get_loc(date, method='ffill') < 250: continue
+        if syn_ret.index.get_indexer([date], method='ffill')[0] < 250: continue
         if date not in syn_ret.index: date = syn_ret.index[syn_ret.index.get_loc(date, method='ffill')]
         
         # 配分比率
